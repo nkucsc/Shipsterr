@@ -7,20 +7,20 @@ const upsId = "ckhuang18";
 const upsPw = "Shipsterr115";
 const upsKey = "FD665C9244786FF5";
 
-var shipToAddress = "1230 Shaffer Road";
-var shipToCity = "Santa Cruz";
-var shipToState = "CA";
-var shipToZip = 95060;
+// var shipToAddress = "1230 Shaffer Road";
+// var shipToCity = "Santa Cruz";
+// var shipToState = "CA";
+// var shipToZip = 95060;
 
-var shipFromAddress = "8 Holly Street";
-var shiptFromCity = "Irvine";
-var shipFromState = "CA";
-var shipFromZip = "92612";
+// var shipFromAddress = "8 Holly Street";
+// var shiptFromCity = "Irvine";
+// var shipFromState = "CA";
+// var shipFromZip = "92612";
 
-var weight = 5;
-var length = 10;
-var width = 5
-var height = 7;
+// var weight = 5;
+// var length = 10;
+// var width = 5
+// var height = 7;
 
 const makeXml = (body) =>
 `<?xml version="1.0"?>
@@ -107,7 +107,7 @@ async function rateAsync(body) {
     const reqXml = makeXml(body);
     const res = await fetch(TESTING_URL, { method: 'POST', body: reqXml }); // fetch to the API
     const resXml = await res.text();
-    const result = resXml.match(/<HighestSeverity>([^<]+)<\/HighestSeverity>/);
+    const result = resXml.match(/<ResponeStatusDescription>([^<]+)<\/ResponseStatusDescription>/);
     if (res.status === 200 && result[1] === "SUCCESS") { // if the API call was successful
         const regex = /<TotalCharges><CurrencyCode>USD<\/Currency><MonetaryValue>([^<]+)<\/MonetaryValue><\/TotalCharges>/;
         const match = resXml.match(regex);
