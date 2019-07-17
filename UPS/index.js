@@ -1,10 +1,10 @@
 const express = require('express');
-const fedex = require('./ups.js');
+const ups = require('./ups.js');
 const app = express();
 const port = 8080;
 
 async function calcHandler(req, res) {
-    const text = await fedex.rateAsync(req.body);
+    const text = await ups.rateAsync(req.body);
     res.send(text);
 }
 
