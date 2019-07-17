@@ -1,3 +1,5 @@
+// Javascript program to run the server using node.js packages
+// calls the fedex.js program to return the price
 const express = require('express');
 const fedex = require('./fedex.js');
 const app = express();
