@@ -1,6 +1,19 @@
+/*
+
+This format is followed the USPS api
+
+*/
+
+
+
 function xmlrequest(){
+  var origination = 02211;
+  var destination = 90210;
   var pounds = 5;
-  var ounces = 2;
+  var ounces = 0;
+  var width = 15;
+  var length = 30;
+  var height = 15;
   var userid = "098GIATR6369"; //"[userid]";
   var url = "http://production.shippingapis.com/ShippingAPI.dll";
   var payload =
@@ -10,15 +23,15 @@ function xmlrequest(){
                  <Revision/> \
                  <Package ID=\"1ST\"> \
                    <Service>PRIORITY</Service> \
-                   <ZipOrigination>02211</ZipOrigination> \
-                   <ZipDestination>90210</ZipDestination> \
+                   <ZipOrigination>origination</ZipOrigination> \
+                   <ZipDestination>destination</ZipDestination> \
                    <Pounds>" + pounds + "</Pounds> \
                    <Ounces>" + ounces + "</Ounces> \  // In our website, ounces = 0
                    <Container>RECTANGULAR</Container> \
                    <Size>LARGE</Size> \
-                   <Width>15</Width> \
-                   <Length>30</Length> \
-                   <Height>15</Height> \
+                   <Width>width</Width> \
+                   <Length>length</Length> \
+                   <Height>height</Height> \
                    <Girth>55</Girth> \     // I don'tknow what this is, anyone helps me?
                  </Package> \
                </RateV4Request>"
