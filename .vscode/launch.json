@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\UPS\\index.js",
+            "program": "${workspaceFolder}/UPS/index.js",
             "cwd": "${workspaceRoot}/UPS"
         }
     ]
