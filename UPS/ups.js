@@ -1,12 +1,16 @@
+//This allows the program to run the node-fetch module
 const fetch = require('node-fetch');
 
+//API URLs given in the documentation
 const TESTING_URL = 'https://wwwcie.ups.com/ups.app/xml/Rate';
 const PRODUCTION_URL = 'https://onlinetools.ups.com/ups.app/xml/Rate';
 
+//UPS credentials
 const upsId = "ckhuang18";
 const upsPw = "Shipsterr115";
 const upsKey = "FD665C9244786FF5";
 
+//xml form that is sent to the api with macros inside for a dynamic api.
 const makeXml = (body) =>
 `<?xml version="1.0"?>
 <AccessRequest xml:lang="en-US">
@@ -88,7 +92,7 @@ const makeXml = (body) =>
     </Shipment>
 </RatingServiceSelectionRequest>`;
 
-
+//Grabs the price we need from the response xml with regex
 async function rateAsync(body) {
     const reqXml = makeXml(body);
     const res = await fetch(TESTING_URL, { method: 'POST', body: reqXml }); // fetch to the API
@@ -107,4 +111,5 @@ async function rateAsync(body) {
     }
 }
 
+//exports method to allow main file to use this function.
 module.exports.rateAsync = rateAsync;
