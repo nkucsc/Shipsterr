@@ -44,7 +44,7 @@ const makeXml = (body) =>
 <Width>${body.package_Width}</Width> 
 <Length>${body.package_Length}</Length> 
 <Height>${body.package_Height}</Height> 
-<Girth>55</Girth> 
+<Girth>${2*(body.package_Height + body.package_Width)}</Girth> 
 </Package> 
 </RateV4Request> `;
 
@@ -60,7 +60,7 @@ async function uspsRateAsync(body) {
         const regex = /<Rate>([^<]+)<\/Rate>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
-        return `Price is: ${price}`;
+        return `${price}`;
     } else {
         const regex = /<Postage CLASSID="1"><MailService>Priority Mail 2-Day&amp;lt;sup&amp;gt;&amp;#8482;&amp;lt;\/sup&amp;gt;<\/MailService><Rate>([^<]+)<\/Rate><\/Postage>/;
         const match = resXml.match(regex);

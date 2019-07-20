@@ -102,7 +102,7 @@ async function upsRateAsync(body) {
         const regex = /<TotalCharges><CurrencyCode>USD<\/CurrencyCode><MonetaryValue>([^<]+)<\/MonetaryValue><\/TotalCharges>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
-        return `Price is: ${price}`;
+        return `${price}`;
     } else {
         const regex = /<ErrorDescription>([^<]+)<\/ErrorDescription>/;
         const match = resXml.match(regex);
