@@ -10,7 +10,19 @@ const upsId = "ckhuang18";
 const upsPw = "Shipsterr115";
 const upsKey = "FD665C9244786FF5";
 
-var serviceType = 02;
+function parseService(body) {
+    if(body.service_Type === "Ground Shipping") {
+      return "03";
+    } else if (body.service_Type === "3 Business Day") {
+      return "12";
+    } else if (body.service_Type === "2 Business Day") {
+      return "02";
+    } else if (body.service_Type === "1 Business Day") {
+      return "01";
+    }
+  }
+  
+
 
 //xml form that is sent to the api with macros inside for a dynamic api.
 const makeXml = (body) =>
@@ -76,7 +88,7 @@ const makeXml = (body) =>
         </Service>
         <Package>
             <PackagingType>
-                <Code>${serviceType}</Code>
+                <Code>${parseService(body)}</Code>
                 <Description>UPS Package</Description>
             </PackagingType>
             <PackageWeight>
