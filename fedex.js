@@ -10,10 +10,21 @@ const FEDEX_ACCOUNT_NUMBER = '510088000';
 const FEDEX_METER_NUMBER = '100417677';
 const FEDEX_KEY = 'HaaYYa3AMmOQGZYL';
 const FEDEX_PASSWORD = '8JihjDHJ6KSnSApCtGjtEopoa';
-const FEDEX_SERVICE_TYPE = 'FEDEX_GROUND';
 
 // function that makes an xml form to send to the API
 // it contains macros for all the variables
+
+function parseService(body) {
+  if(body.service_Type === "GROUND") {
+    return "FEDEX_GROUND";
+  } else if (body.service_Type === "3 DAY") {
+    return "FEDEX_EXPRESS_SAVER";
+  } else if (body.service_Type === "2 DAY") {
+    return "FEDEX_2_DAY";
+  } else if (body.service_Type === "NEXT DAY") {
+    return "FEDEX_NEXT_DAY_AFTERNOON";
+  }
+}
 
 const makeXml = (body) => 
 `<?xml version="1.0" encoding="UTF-8"?>
@@ -38,7 +49,7 @@ const makeXml = (body) =>
   </Version>
   <ReturnTransitAndCommit>true</ReturnTransitAndCommit>
   <RequestedShipment>
-    <ServiceType>${FEDEX_SERVICE_TYPE}</ServiceType>
+    <ServiceType>${parseService(body)}</ServiceType>
     <Shipper>
       <Address>
         <StreetLines>${body.shipper_Address}</StreetLines>
