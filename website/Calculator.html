@@ -97,9 +97,9 @@
 						    <thead>
 						      <tr>
 						        <th>Type</th>
-						        <th> State/Province</th>
-<th> City</th>
-						        <th>Zip/Postal Code</th>
+						        <th> State/Province:</th>
+<th> City:</th>
+						        <th>Zip/Postal Code:</th>
 </tr>
 						    </thead>
 						
@@ -185,14 +185,13 @@
 									<td colspan="2" class="form-group">
 									  <div>
 									  	<div>
-									  		<label style="" for="">Select Service Providers: </label>
+									  		<label name="service_Type"style=" for="">Select Service Providers: </label>
 									  	</div>
 									  	<div>
-									  		<select name="service_provider[]" class="service_provider select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
-									  			<option value="FEDEX">1 Business Day</option>
-									  			<option value="UPS">2 Business Day</option>
-									  			<option value="USPS">3 Business Day</option>
-									  			<option value="DHL_EXPRESS">Standard Shipping</option
+									  		<select name="service_Type" class="service_provider select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
+									  			<option value="1 Business Day">1 Business Day</option>
+									  			<option value="2 Business Day">2 Business Day</option>
+<option value="Ground Shipping">Ground Shipping</option
 									  		</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 116px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered">
 									  		  <li class="select2-search select2-search--inline"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
 									  	</div>
@@ -204,7 +203,7 @@
 
 								  	<td class="form-group">
 
-									  <label>Weight:  <input type="number" id="package_weight" name="weight_Value" class="form-control" value="1">  </label><br>
+									  <label>Weight(Round Up):  <input type="number" id="package_weight" name="weight_Value" class="form-control" value="1">  </label><br>
 								  	</td>
 								  	<td>
 
@@ -217,21 +216,13 @@
 								<td>
 
 								</td>
-								<td>
-									<label for="package_length">Length</label>
-									<input type="text" name="package_Length" id="package_Length" value="2" />
+								<td><label for="package_length">Length:</label>								  <input type="text" name="package_Length" id="package_Length" value="2" />
 								</td>
-								<td>
-									<label for="package_width">Width</label>
-									<input type="text" name="package_Width" id="package_Width" value="2" />
+								<td><label for="package_width2">Width:</label>								  <input type="text" name="package_Width" id="package_Width" value="2" />
 								</td>
-								<td>
-									<label for="package_height">Height</label>
-									<input type="text" name="package_Height" id="package_Height" value="2" />
+								<td><label for="package_height2">Height:</label>								  <input type="text" name="package_Height" id="package_Height" value="2" />
 								</td>								
-								<td>
-									<label for="package_units">Dimension Units</label>
-									<input type="text" name="package_Units" id="package_Units" value="IN" />
+								<td><label for="package_units2">Dimension Units:</label>								  <input type="text" name="package_Units" id="package_Units" value="IN" />
 								</td>
 						  </tr>
 						</tbody>

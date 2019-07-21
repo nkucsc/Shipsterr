@@ -9,7 +9,7 @@ const PRODUCTION_URL = 'http://production.shippingapis.com/ShippingAPI.dll';
 
 // keys
 
-const USPS_SERVICE_TYPE = '098GIATR6369';
+const USPS_USER_ID = '098GIATR6369';
 
 
 // function that makes an xml form to send to the API
@@ -26,14 +26,14 @@ function parseService(body) {
 }
 
 const makeXml = (body) => 
-`http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="USPS_SERVICE_TYPE">
+`http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="${USPS_USER_ID}">
 
 <Package ID="1ST"> 
 <Service>${parseService(body)}</Service> 
 <ZipOrigination>${body.shipper_ZipCode}</ZipOrigination> 
 <ZipDestination>${body.recipient_ZipCode}</ZipDestination> 
 <Pounds>${body.weight_Value}</Pounds> 
-<Ounces>5</Ounces> 
+<Ounces>0</Ounces> 
 <Container>NONRECTANGULAR</Container> 
 <Size>LARGE</Size> 
 <Width>${body.package_Width}</Width> 
@@ -54,11 +54,20 @@ async function uspsRateAsync(body) {
     //const result = resXml.match(/<HighestSeverity>([^<]+)<\/HighestSeverity>/);
     if (res.status === 200) { // if the API call was successful
         const regex = /<Rate>([^<]+)<\/Rate>/;
+        const regErr = /<Description>([^<]+)<\/Description>/
         const match = resXml.match(regex);
-        const price = match !== null ? match[1] : "NaN";
-        return `$${price}`;
+        const matchErr = resXml.match(regErr);
+        var price = ``;
+        if (match !== null) {
+            price = `$${match[1]}`;
+        } else if(matchErr !== null) {
+            price = `Error: ${matchErr[1]}`;
+        } else {
+            price = "NaN";
+        }
+        return price;
     } else {
-        const regex = /<Postage CLASSID="1"><MailService>Priority Mail 2-Day&amp;lt;sup&amp;gt;&amp;#8482;&amp;lt;\/sup&amp;gt;<\/MailService><Rate>([^<]+)<\/Rate><\/Postage>/;
+        const regex = /<Description>([^<]+)<\/Description>/;
         const match = resXml.match(regex);
         const error = match !== null ? match[1] : "unknown error";
         return `Error: ${error}`;

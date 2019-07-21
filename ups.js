@@ -80,12 +80,12 @@ const makeXml = (body) =>
             </Address>
         </ShipFrom>
         <Service>
-            <Code>03</Code>
+            <Code>${parseService(body)}</Code>
             <Description>UPS Ground</Description>
         </Service>
         <Package>
             <PackagingType>
-                <Code>${parseService(body)}</Code>
+                <Code>02</Code>
                 <Description>UPS Package</Description>
             </PackagingType>
             <PackageWeight>

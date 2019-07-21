@@ -20,7 +20,7 @@ function parseService(body) {
   } else if (body.service_Type === "2 Business Day") {
     return "FEDEX_2_DAY";
   } else if (body.service_Type === "1 Business Day") {
-    return "FEDEX_NEXT_DAY_AFTERNOON";
+    return "PRIORITY_OVERNIGHT";
   }
 }
 
@@ -80,7 +80,7 @@ const makeXml = (body) =>
         <Length>${body.package_Length}</Length>
         <Width>${body.package_Width}</Width>
         <Height>${body.package_Height}</Height>
-        <Units>${body.package_Units}</Units>
+        <Units>IN</Units>
       </Dimensions>
     </RequestedPackageLineItems>
   </RequestedShipment>
@@ -96,7 +96,7 @@ async function fedexRateAsync(body) {
     const res = await fetch(TESTING_URL, { method: 'POST', body: reqXml }); // fetch to the API
     const resXml = await res.text();
     const result = resXml.match(/<HighestSeverity>([^<]+)<\/HighestSeverity>/);
-    if (res.status === 200 && result[1] === "SUCCESS") { // if the API call was successful
+    if (res.status === 200 && (result[1] === "SUCCESS" || result[1] === "NOTE")) { // if the API call was successful
         const regex = /<TotalNetChargeWithDutiesAndTaxes><Currency>USD<\/Currency><Amount>([^<]+)<\/Amount><\/TotalNetChargeWithDutiesAndTaxes>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
