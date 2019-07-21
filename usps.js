@@ -15,11 +15,21 @@ const USPS_SERVICE_TYPE = '098GIATR6369';
 // function that makes an xml form to send to the API
 // it contains macros for all the variables
 
+function parseService(body) {
+    if(body.service_Type === "Ground Shipping") {
+        return "RETAIL GROUND";
+    } else if (body.service_Type === "2 Business Day") {
+        return "PRIORITY";
+    } else if (body.service_Type === "1 Business Day") {
+        return "PRIORITY EXPRESS";
+    }
+}
+
 const makeXml = (body) => 
 `http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="USPS_SERVICE_TYPE">
 
 <Package ID="1ST"> 
-<Service>PRIORITY</Service> 
+<Service>${parseService(body)}</Service> 
 <ZipOrigination>${body.shipper_ZipCode}</ZipOrigination> 
 <ZipDestination>${body.recipient_ZipCode}</ZipDestination> 
 <Pounds>${body.weight_Value}</Pounds> 
@@ -29,7 +39,8 @@ const makeXml = (body) =>
 <Width>${body.package_Width}</Width> 
 <Length>${body.package_Length}</Length> 
 <Height>${body.package_Height}</Height> 
-<Girth>${2*(body.package_Height + body.package_Width)}</Girth> 
+<Girth>${2*(body.package_Height + body.package_Width)}</Girth>
+<Machinable>True</Machinable>
 </Package> 
 </RateV4Request> `;
 
@@ -45,7 +56,7 @@ async function uspsRateAsync(body) {
         const regex = /<Rate>([^<]+)<\/Rate>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
-        return `${price}`;
+        return `$${price}`;
     } else {
         const regex = /<Postage CLASSID="1"><MailService>Priority Mail 2-Day&amp;lt;sup&amp;gt;&amp;#8482;&amp;lt;\/sup&amp;gt;<\/MailService><Rate>([^<]+)<\/Rate><\/Postage>/;
         const match = resXml.match(regex);

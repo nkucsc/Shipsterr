@@ -15,13 +15,11 @@ const FEDEX_PASSWORD = '8JihjDHJ6KSnSApCtGjtEopoa';
 // it contains macros for all the variables
 
 function parseService(body) {
-  if(body.service_Type === "GROUND") {
+  if(body.service_Type === "Ground Shipping") {
     return "FEDEX_GROUND";
-  } else if (body.service_Type === "3 DAY") {
-    return "FEDEX_EXPRESS_SAVER";
-  } else if (body.service_Type === "2 DAY") {
+  } else if (body.service_Type === "2 Business Day") {
     return "FEDEX_2_DAY";
-  } else if (body.service_Type === "NEXT DAY") {
+  } else if (body.service_Type === "1 Business Day") {
     return "FEDEX_NEXT_DAY_AFTERNOON";
   }
 }
@@ -102,7 +100,7 @@ async function fedexRateAsync(body) {
         const regex = /<TotalNetChargeWithDutiesAndTaxes><Currency>USD<\/Currency><Amount>([^<]+)<\/Amount><\/TotalNetChargeWithDutiesAndTaxes>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
-        return `${price}`;
+        return `$${price}`;
     } else {
         const regex = /<Message>([^<]+)<\/Message>/;
         const match = resXml.match(regex);
