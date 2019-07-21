@@ -10,6 +10,17 @@ const upsId = "ckhuang18";
 const upsPw = "Shipsterr115";
 const upsKey = "FD665C9244786FF5";
 
+//Allows dynamic selection of rates based on user input
+function parseService(body) {
+    if(body.service_Type === "Ground Shipping") {
+      return "03";
+    } else if (body.service_Type === "2 Business Day") {
+      return "02";
+    } else if (body.service_Type === "1 Business Day") {
+      return "01";
+    }
+  }
+
 //xml form that is sent to the api with macros inside for a dynamic api.
 const makeXml = (body) =>
 `<?xml version="1.0"?>
@@ -74,7 +85,7 @@ const makeXml = (body) =>
         </Service>
         <Package>
             <PackagingType>
-                <Code>02</Code>
+                <Code>${parseService(body)}</Code>
                 <Description>UPS Package</Description>
             </PackagingType>
             <PackageWeight>
@@ -102,7 +113,7 @@ async function upsRateAsync(body) {
         const regex = /<TotalCharges><CurrencyCode>USD<\/CurrencyCode><MonetaryValue>([^<]+)<\/MonetaryValue><\/TotalCharges>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
-        return `${price}`;
+        return `$${price}`;
     } else {
         const regex = /<ErrorDescription>([^<]+)<\/ErrorDescription>/;
         const match = resXml.match(regex);
