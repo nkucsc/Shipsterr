@@ -3,7 +3,7 @@
 const fetch = require('node-fetch');
 
 const PRODUCTION_URL = 'http://production.shippingapis.com/ShippingAPI.dll';
-// const TESTING_URL = `http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="098GIATR6369">
+// const TESTING_URL = `http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="${USPS_SERVICE_TYPE">
 
 // <Package ID="1ST"> 
 // <Service>PRIORITY</Service> 
