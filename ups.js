@@ -10,6 +10,8 @@ const upsId = "ckhuang18";
 const upsPw = "Shipsterr115";
 const upsKey = "FD665C9244786FF5";
 
+var serviceType = 02;
+
 //xml form that is sent to the api with macros inside for a dynamic api.
 const makeXml = (body) =>
 `<?xml version="1.0"?>
@@ -74,7 +76,7 @@ const makeXml = (body) =>
         </Service>
         <Package>
             <PackagingType>
-                <Code>02</Code>
+                <Code>${serviceType}</Code>
                 <Description>UPS Package</Description>
             </PackagingType>
             <PackageWeight>
