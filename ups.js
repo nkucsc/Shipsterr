@@ -10,6 +10,7 @@ const upsId = "ckhuang18";
 const upsPw = "Shipsterr115";
 const upsKey = "FD665C9244786FF5";
 
+//Allows dynamic selection of rates based on user input
 function parseService(body) {
     if(body.service_Type === "Ground Shipping") {
       return "03";
@@ -21,8 +22,6 @@ function parseService(body) {
       return "01";
     }
   }
-  
-
 
 //xml form that is sent to the api with macros inside for a dynamic api.
 const makeXml = (body) =>
