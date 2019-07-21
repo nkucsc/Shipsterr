@@ -20,7 +20,7 @@ function parseService(body) {
   } else if (body.service_Type === "2 Business Day") {
     return "FEDEX_2_DAY";
   } else if (body.service_Type === "1 Business Day") {
-    return "PRIORITY_OVERNIGHT";
+    return "STANDARD_OVERNIGHT";
   }
 }
 
