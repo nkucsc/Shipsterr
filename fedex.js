@@ -45,7 +45,7 @@ const makeXml = (body) =>
         <City>${body.shipper_City}</City>
         <StateOrProvinceCode>${body.shipper_State}</StateOrProvinceCode>
         <PostalCode>${body.shipper_ZipCode}</PostalCode>
-        <CountryCode>${body.shipper_Country}</CountryCode>
+        <CountryCode>US</CountryCode>
       </Address>
     </Shipper>
     <Recipient>
@@ -54,7 +54,7 @@ const makeXml = (body) =>
         <City>${body.recipient_City}</City>
         <StateOrProvinceCode>${body.recipient_State}</StateOrProvinceCode>
         <PostalCode>${body.recipient_ZipCode}</PostalCode>
-        <CountryCode>${body.recipient_Country}</CountryCode>
+        <CountryCode>US</CountryCode>
       </Address>
     </Recipient>
     <ShippingChargesPayment>
@@ -91,7 +91,7 @@ async function fedexRateAsync(body) {
         const regex = /<TotalNetChargeWithDutiesAndTaxes><Currency>USD<\/Currency><Amount>([^<]+)<\/Amount><\/TotalNetChargeWithDutiesAndTaxes>/;
         const match = resXml.match(regex);
         const price = match !== null ? match[1] : "NaN";
-        return `Price is: ${price}`;
+        return `${price}`;
     } else {
         const regex = /<Message>([^<]+)<\/Message>/;
         const match = resXml.match(regex);
