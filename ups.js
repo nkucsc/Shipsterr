@@ -1,4 +1,5 @@
 //This allows the program to run the node-fetch module
+require('dotenv').config();
 const fetch = require('node-fetch');
 
 //API URLs given in the documentation
@@ -6,9 +7,9 @@ const TESTING_URL = 'https://wwwcie.ups.com/ups.app/xml/Rate';
 const PRODUCTION_URL = 'https://onlinetools.ups.com/ups.app/xml/Rate';
 
 //UPS credentials
-const upsId = "ckhuang18";
-const upsPw = "Shipsterr115";
-const upsKey = "FD665C9244786FF5";
+const upsId = process.env.UPS_ID;
+const upsPw = process.env.UPS_PASSWORD;
+const upsKey = process.env.UPS_KEY;
 
 //xml form that is sent to the api with macros inside for a dynamic api.
 const makeXml = (body) =>
