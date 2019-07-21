@@ -1,44 +1,29 @@
-// Javascript program to call fedex APIs
+// Javascript program to call usps APIs
 // includes input from html form
+
 const fetch = require('node-fetch');
 
 const PRODUCTION_URL = 'http://production.shippingapis.com/ShippingAPI.dll';
-// const TESTING_URL = `http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="${USPS_SERVICE_TYPE">
+// const TESTING_URL = `http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="USPS_SERVICE_TYPE">
 
-// <Package ID="1ST"> 
-// <Service>PRIORITY</Service> 
-// <ZipOrigination>${body.shipper_ZipCode}</ZipOrigination> 
-// <ZipDestination>${body.recipient_ZipCode}</ZipDestination> 
-// <Pounds>${body.weight_Value}</Pounds> 
-// <Ounces>8</Ounces> 
-// <Container>NONRECTANGULAR</Container> 
-// <Size>LARGE</Size> 
-// <Width>${body.package_Width}</Width> 
-// <Length>${body.package_Length}</Length> 
-// <Height>${body.package_Height}</Height> 
-// <Girth>55</Girth> 
-// </Package> 
-// </RateV4Request> `;
 
 // keys
-const FEDEX_ACCOUNT_NUMBER = '510088000';
-const FEDEX_METER_NUMBER = '100417677';
-const FEDEX_KEY = 'HaaYYa3AMmOQGZYL';
-const FEDEX_PASSWORD = '8JihjDHJ6KSnSApCtGjtEopoa';
-const FEDEX_SERVICE_TYPE = 'FEDEX_GROUND';
+
+const USPS_SERVICE_TYPE = '098GIATR6369';
+
 
 // function that makes an xml form to send to the API
 // it contains macros for all the variables
 
 const makeXml = (body) => 
-`http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="098GIATR6369">
+`http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="USPS_SERVICE_TYPE">
 
 <Package ID="1ST"> 
 <Service>PRIORITY</Service> 
 <ZipOrigination>${body.shipper_ZipCode}</ZipOrigination> 
 <ZipDestination>${body.recipient_ZipCode}</ZipDestination> 
 <Pounds>${body.weight_Value}</Pounds> 
-<Ounces>8</Ounces> 
+<Ounces>5</Ounces> 
 <Container>NONRECTANGULAR</Container> 
 <Size>LARGE</Size> 
 <Width>${body.package_Width}</Width> 
