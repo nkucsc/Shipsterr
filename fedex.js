@@ -1,16 +1,16 @@
 // Javascript program to call fedex APIs
 // includes input from html form
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const PRODUCTION_URL = 'https://ws.fedex.com:443/web-services/rate';
 const TESTING_URL = 'https://wsbeta.fedex.com:443/web-services/rate';
 
 // keys
-const FEDEX_ACCOUNT_NUMBER = '510088000';
-const FEDEX_METER_NUMBER = '100417677';
-const FEDEX_KEY = 'HaaYYa3AMmOQGZYL';
-const FEDEX_PASSWORD = '8JihjDHJ6KSnSApCtGjtEopoa';
-
+const FEDEX_ACCOUNT_NUMBER = process.env.FEDEX_ACCOUNT;
+const FEDEX_METER_NUMBER = process.env.FEDEX_METER;
+const FEDEX_KEY = process.env.FEDEX_KEY;
+const FEDEX_PASSWORD = process.env.FEDEX_PASSWORD;
 // function that makes an xml form to send to the API
 // it contains macros for all the variables
 

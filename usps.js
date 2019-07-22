@@ -1,16 +1,13 @@
 // Javascript program to call usps APIs
 // includes input from html form
-
+require('dotenv').config();
 const fetch = require('node-fetch');
 
 const PRODUCTION_URL = 'http://production.shippingapis.com/ShippingAPI.dll';
 // const TESTING_URL = `http://production.shippingapis.com/ShippingApi.dll?API=RateV4&XML=<RateV4Request USERID="USPS_SERVICE_TYPE">
 
-
 // keys
-
-const USPS_USER_ID = '098GIATR6369';
-
+const USPS_USER_ID = process.env.USPS_ID;
 
 // function that makes an xml form to send to the API
 // it contains macros for all the variables

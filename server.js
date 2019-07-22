@@ -1,11 +1,12 @@
 // Javascript program to run the server using node.js packages
 // calls the fedex.js program to return the price
+require('dotenv').config();
 const express = require('express');
 const fedex = require('./fedex.js');
 const ups = require('./ups.js');
 const usps = require('./usps.js');
 const app = express();
-const port = 8080;
+const port = process.env.port || 8080;
 
 const makeResponse = (fedexPrice, upsPrice, uspsPrice) => 
 `<!--Calculator Fuction-->
