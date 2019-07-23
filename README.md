@@ -9,14 +9,14 @@ the order management, shipping and fulfillment for online retailers to get a val
 
 ## How to use:
 
-1. Unzip the file "Shipsterr-Master"
+1. Unzip the file "Shipsterr-Master".
 2. It is requere to run the server in order to run the website in the local host. 
 3. Run the server in the terminal,( Requiere to have "Node.js").
 4. Once the "Node.js" is installed is is requiere to acces the command line has a sense of location,
  that is, what folder "Shipsterr-Master" is . This is called your current working directory. 
-5. Step 1: Install the Node.js in the current directory 
-6. Step 2: Run the server by "Node server.js"
-7. Step 3: It will provide the web local hot such to be tested in the web browser "http://localhost:8080/".  
+5. Step 1: Install the Node.js in the current directory. 
+6. Step 2: Run the server by "Node server.js".
+7. Step 3: It will provide the web local host such to be tested in the web browser of preference"http://localhost:8080/".  
 8. Enter the local host provided in any web browser of preference. 
 9. First it will display the home page of Shipsterr, this website have only one mainly functional function.The mainly functionality is the 
 ability to "calculate the shipping method by different carriers.
