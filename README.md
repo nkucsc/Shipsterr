@@ -19,7 +19,7 @@ the order management, shipping and fulfillment for online retailers to get a val
 7. Step 3: It will provide the web local host such to be tested in the web browser of preference"http://localhost:8080/".  
 8. Enter the local host provided in any web browser of preference. 
 9. First it will display the home page of Shipsterr, this website have only one mainly functional function.The mainly functionality is the 
-ability to "calculate the shipping method by different carriers.
+ability to calculate the shipping method by different carriers.
 10. In order to calculate the shipping method is necessary to click on "Shipping-Calculator", that is located in the right-top header
 of the website or in the center of the header.
 11. It will display our Calculator.html where it will be the table input that is required to fill in each input in order to calculate.
