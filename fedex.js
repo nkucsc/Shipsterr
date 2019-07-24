@@ -11,9 +11,8 @@ const FEDEX_ACCOUNT_NUMBER = process.env.FEDEX_ACCOUNT;
 const FEDEX_METER_NUMBER = process.env.FEDEX_METER;
 const FEDEX_KEY = process.env.FEDEX_KEY;
 const FEDEX_PASSWORD = process.env.FEDEX_PASSWORD;
-// function that makes an xml form to send to the API
-// it contains macros for all the variables
 
+// function to parse input for multiple service types
 function parseService(body) {
   if(body.service_Type === "Ground Shipping") {
     return "FEDEX_GROUND";
@@ -24,6 +23,8 @@ function parseService(body) {
   }
 }
 
+// function that makes an xml form to send to the API
+// it contains macros for all the variables
 const makeXml = (body) => 
 `<?xml version="1.0" encoding="UTF-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://fedex.com/ws/rate/v24">
@@ -104,7 +105,7 @@ async function fedexRateAsync(body) {
     } else {
         const regex = /<Message>([^<]+)<\/Message>/;
         const match = resXml.match(regex);
-        const error = match !== null ? match[1] : "unknown error";
+        const error = match !== null ? match[1] : "Missing or invalid inputs";
         return `Error: ${error}`;
     }
 }

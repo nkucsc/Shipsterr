@@ -1,45 +1,30 @@
 #Prototype- Shipsterr-Master 
 #Class: CMPS-115
 
-#Project description 
-The website provides a mainly home page welcoming, linked with our mainly functionality,
-"Shipsterr Calculator ", in order ot obtain different prices from different providers parcels.
-Shipsterr integrates with multiple selling channels and shipping carriers to streamline 
-the order management, shipping and fulfillment for online retailers to get a value of the process of shipment. 
+#Project description
+Shipsterr is a shipping calculator that allows the user to get shipping rates from multiple service providers. Our website is easy to use and asks the user for zipcode, city, and state the user is shipping from as well as to and length of the package, width of the package, height of the package, and service type. The calculator then returns estimates on rates based on these inputs of three of the biggest domestic service providers: UPS, USPS, and FedEx. Ideally this project should be hosted on a web server with Node.js installed.
 
 ## How to use:
 
-1. Unzip the file "Shipsterr-Master".
-2. It is requere to run the server in order to run the website in the local host. 
-3. Run the server in the terminal,( Requiere to have "Node.js").
-4. Once the "Node.js" is installed is is requiere to acces the command line has a sense of location,
- that is, what folder "Shipsterr-Master" is . This is called your current working directory. 
-5. Step 1: Install the Node.js in the current directory. 
-6. Step 2: Run the server by "Node server.js".
-7. Step 3: It will provide the web local host such to be tested in the web browser of preference"http://localhost:8080/".  
-8. Enter the local host provided in any web browser of preference. 
-9. First it will display the home page of Shipsterr, this website have only one mainly functional function.The mainly functionality is the 
-ability to calculate the shipping method by different carriers.
-10. In order to calculate the shipping method is necessary to click on "Shipping-Calculator", that is located in the right-top header
-of the website or in the center of the header.
-11. It will display our Calculator.html where it will be the table input that is required to fill in each input in order to calculate.
-12. Enter the requiere inputs in order to calculate the shipping price. 
-13. Once the inputs has been entered such as State, City, Zip code, weight, length, height and service provider, Click Shipping Rates.
-14. The shipping prices will be displaying at new page from the parcels of Fedex, Ups and USPS. 
+1. Download and unzip the file "Shipsterr-Master".
+3. Download and install Node.js (a simple and lightweight javascript runtime).
+4. Once Node.js is installed, open the command terminal of your computer and move inside the "Shipsterr-Master" directory.
+5. Type "npm install" (without quotations). This installs the required node modules.
+6. Once installation is complete, type "node server.js".
+7. Open a web browser, and enter localhost:8080/ into the URL. This should take you to the homepage of the website.
+8. Click on the calculator button and enter the desired length, width, weight, and to: and from: locations. Make sure to pick a service type (ground shipping, 1 day, or 2 day).
+9. Click the submit button at the bottom, and the website will take you to a new page with the prices of FedEx, UPS, and USPS based on your inputs. If you entered something incorrectly, invalidly, or did not enter anything at all, error messages describing what is missing will show on this page instead of prices.
 
 ## Dependencies programs:
 
-* Adobe Dreamweaver : Structure development of HTML and CSS designs.  
-* API' shipping server from Fedex, UPS and USPS.
-* Terminal 
-
+* Node.js and its specific packages that were used for the program.  
+* API shipping server from Fedex, UPS and USPS.
 
 #Development Programs platforms: 
 
 * Adobe Dreamweaver 2019 
-* Visual Studio
+* Visual Studio Code
 * Adobe Illustrator
 * Adobe Photoshop 
 * GitHub 
-* 000Web-Host 
-*
+* Node.js

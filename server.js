@@ -8,6 +8,7 @@ const usps = require('./usps.js');
 const app = express();
 const port = process.env.port || 8080;
 
+// returns a html page with the prices returned from the APIs
 const makeResponse = (fedexPrice, upsPrice, uspsPrice) => 
 `<!--Calculator Fuction-->
 <!doctype html>
@@ -252,6 +253,7 @@ const makeResponse = (fedexPrice, upsPrice, uspsPrice) =>
 </body>
 </html>`;
 
+// function to call the fetch function of all 3 APIs
 async function calcHandler(req, res) {
     const fedexPrice = await fedex.fedexRateAsync(req.body);
     const upsPrice = await ups.upsRateAsync(req.body);
